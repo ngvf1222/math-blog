@@ -1,0 +1,28 @@
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<div style="display: flex;height: 83px;">
+    <a href="/"><img src="https://ifh.cc/g/VsH2l1.png"></a>
+    {% if user.is_authenticated %}
+    <a class="nav-link" href="/logout" style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;">{{ user.username }} (로그아웃)</a>
+    {% else %}
+    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;" href="/login/">로그인</a>
+    {% endif %}
+    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;margin-left: 20px;" href="/ghldnjs">회원가입</a>
+    <a style="font-size: 20px;font-weight: 500;height: 30;margin-top: 27px;margin-left: 800px;color: #000000;text-decoration: none;" href="/nqf">새글등록</a>
+    <input type="text" style="margin-top: 27px;margin-bottom: 27px;margin-left: 15px;" id='h'>
+    <button style="margin-top: 27px;margin-bottom: 27px;" onclick="location.href='./q/'+document.getElementById('h').value">
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149852.png" style="width: 20px;">
+    </button>
+</div>
+{{ qs.count }}개의 검색결과가 있습니다.</h5>
+<div>
+    {% for qss in qs %}
+        <div style="height: 35;border-style: solid;border-color: #dddfe2;border-width: 1px;width: 100%;background-color: #ffffff;border-radius: 10px;margin-left: 0;position:relative;">
+            <a style="text-decoration: none;word-break:break-all;font-size: 20;color: rgb(0, 0, 0);width: 100%;" href="/v/{{ qss.id }}">{{ qss.subject }}</a>
+        </div>
+    {% endfor %}
+</div>

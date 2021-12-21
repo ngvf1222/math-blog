@@ -1,0 +1,60 @@
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<div style="display: flex;height: 83px;">
+    <a href="/"><img src="https://ifh.cc/g/VsH2l1.png"></a>
+    {% if user.is_authenticated %}
+    <a class="nav-link" href="/logout" style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;">{{ user.username }} (로그아웃)</a>
+    {% else %}
+    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;" href="/login/">로그인</a>
+    {% endif %}
+    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;margin-left: 20px;" href="/ghldnjs">회원가입</a>
+    <a style="font-size: 20px;font-weight: 500;height: 30;margin-top: 27px;margin-left: 800px;color: #000000;text-decoration: none;" href="/nqf">새글등록</a>
+    <input type="text" style="margin-top: 27px;margin-bottom: 27px;margin-left: 15px;" id='h'>
+    <button style="margin-top: 27px;margin-bottom: 27px;" onclick="location.href='./q/'+document.getElementById('h').value">
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149852.png" style="width: 20px;">
+    </button>
+</div>
+<p style="margin-left: 40%;font-size: 30;">{{ question.subject }}</p>
+<p style="font-size: 10px;">{{ question.ids }}</p>
+<p style="font-size: 10px;">시리즈:{{ question.series }}</p>
+<p style="font-size: 20px;word-break:break-all;">{{ question.content }}</p>
+<p style="font-size: 10px;margin-top: 0px;">하트:{{ question.point }}개</p>
+<p style="font-size: 10px;margin-left: 90%;margin-top: 0px;margin-bottom: 0px;">작성일:{{ question.create_date }}</p>
+
+        <div class="my-3">
+            <a href="/dq/{{ question.id }}" 
+               class="btn btn-sm btn-outline-secondary">수정(글쓴이만가능)</a>
+            <a href="/ddq/{{ question.id }}" 
+               class="btn btn-sm btn-outline-secondary">삭제(글쓴이만가능)</a>
+        </div>
+<div style="display: flex;height: 30px;">
+    <form action="/pp/{{ question.id }}/" method="post" style="width: 45px;display: flex;height: 30px;margin-bottom: 0px;">
+        {% csrf_token %}
+        <input style="border: none;background-color: #ffffff;padding-left: 0px;padding-right: 0px;padding-top: 0px;padding-bottom: 0px;height: 30;" value="👍" type="submit">
+    </form>
+    <form action="/mp/{{ question.id }}/" method="post" style="display: flex;height: 30px;margin-bottom: 0px;width: 30px;">
+        {% csrf_token %}
+        <input type="submit" style="border: none;background-color: #ffffff;padding-left: 0px;padding-right: 0px;padding-top: 0px;padding-bottom: 0px;height: 30;" value="👎">
+    </form>
+</div>
+<h5>{{ question.answer_set.count }}개의 답변이 있습니다.</h5>
+<div>
+    
+    {% for answer in question.answer_set.all %}
+        <div style="border-style: solid;border-color: #dddfe2;border-width: 1px;width: 100%;background-color: #ffffff;border-radius: 10px;margin-left: 0;position:relative;">
+            <p style="word-break:break-all;font-size: 20;color: rgb(0, 0, 0);width: 100%;">{{ answer.content }}</p>
+            <p style="font-size: 15;">글쓴이:{{ answer.ids }}</p>
+            <a href="/da/{{ answer.id }}">수정(글쓴이만가능)</a>
+            <a href="/dda/{{ answer.id }}">삭제(글쓴이만가능)</a>
+        </div>
+    {% endfor %}
+</div>
+<form action="/answer/create/{{ question.id }}/" method="post" style="display: flex;height: 100px;">
+    {% csrf_token %}
+    <textarea name="content" id="content" rows="15" style="width: 95%;"></textarea>
+    <input type="submit" value="답변등록" style="border-top-width: 0px;border-right-width: 0px;border-bottom-width: 0px;border-left-width: 0px;background-color: #9cd1ff;color: #0342f5;font-weight: 600;">
+</form>

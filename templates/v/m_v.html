@@ -1,0 +1,28 @@
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<div style="display: flex;height: 83px;">
+    <a href="/"><img src="https://ifh.cc/g/VsH2l1.png"></a>
+    {% if user.is_authenticated %}
+    <a class="nav-link" href="/logout" style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;">{{ user.username }} (로그아웃)</a>
+    {% else %}
+    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;" href="/login/">로그인</a>
+    {% endif %}
+    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;margin-left: 20px;" href="/ghldnjs">회원가입</a>
+    <a style="font-size: 20px;font-weight: 500;height: 30;margin-top: 27px;margin-left: 800px;color: #000000;text-decoration: none;" href="/nqf">새글등록</a>
+    <input type="text" style="margin-top: 27px;margin-bottom: 27px;margin-left: 15px;" id='h'>
+    <button style="margin-top: 27px;margin-bottom: 27px;" onclick="location.href='./q/'+document.getElementById('h').value">
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149852.png" style="width: 20px;">
+    </button>
+</div>
+<p style="margin-left: 40%;font-size: 30;">좋아요수 상위 4개는?</p>
+{% if question_list %}
+    <div style="display: flex;height: 300px;margin-top: 50px;">
+    {% for question in question_list %}
+        <a href="/v/{{ question.id }}" style="text-decoration: none;color: #000000;"><div style="border-style: solid;border-color: #dddfe2;border-width: 1px;width: 300px;height: 300px;background-color: #ffffff;border-radius: 10px;margin-left: 20%;position:relative;"><p style="word-break:break-all;left:50%; transform:translate(30%, 5%);font-size: 50;">{{ question.subject }}</p><p style="text-overflow: ellipsis;font-size: 20;color: dimgray;width: 300px;overflow: hidden;white-space: nowrap;">{{ question.content }}</p></div></a>
+    {% endfor %}
+    </div>
+{% endif %}
