@@ -11,10 +11,10 @@
     {% else %}
     <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;" href="/login/">로그인</a>
     {% endif %}
-    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;margin-left: 20px;" href="/ghldnjs">회원가입</a>
-    <a style="font-size: 20px;font-weight: 500;height: 30;margin-top: 27px;margin-left: 800px;color: #000000;text-decoration: none;" href="/nqf">새글등록</a>
+    <a style="font-size: 20px;font-weight: 500;margin-top: 30px;margin-bottom: 25px;color: #000000;text-decoration: none;margin-left: 20px;" href="/user_addr_from">회원가입</a>
+    <a style="font-size: 20px;font-weight: 500;height: 30;margin-top: 27px;margin-left: 800px;color: #000000;text-decoration: none;" href="/new_question_from">새글등록</a>
     <input type="text" style="margin-top: 27px;margin-bottom: 27px;margin-left: 15px;" id='h'>
-    <button style="margin-top: 27px;margin-bottom: 27px;" onclick="location.href='./q/'+document.getElementById('h').value">
+    <button style="margin-top: 27px;margin-bottom: 27px;" onclick="location.href='./Search_writing/'+document.getElementById('h').value">
     <img src="https://cdn-icons-png.flaticon.com/512/149/149852.png" style="width: 20px;">
     </button>
 </div>
@@ -22,7 +22,7 @@
 {% if question_list %}
     <div style="display: flex;height: 300px;margin-top: 50px;">
     {% for question in question_list %}
-        <a href="/v/{{ question.id }}" style="text-decoration: none;color: #000000;"><div style="border-style: solid;border-color: #dddfe2;border-width: 1px;width: 300px;height: 300px;background-color: #ffffff;border-radius: 10px;margin-left: 20%;position:relative;"><p style="word-break:break-all;left:50%; transform:translate(30%, 5%);font-size: 50;">{{ question.subject }}</p><p style="text-overflow: ellipsis;font-size: 20;color: dimgray;width: 300px;overflow: hidden;white-space: nowrap;">{{ question.content }}</p></div></a>
+        <a href="/views_writing/{{ question.id }}" style="text-decoration: none;color: #000000;"><div style="border-style: solid;border-color: #dddfe2;border-width: 1px;width: 300px;height: 300px;background-color: #ffffff;border-radius: 10px;margin-left: 20%;position:relative;"><p style="word-break:break-all;left:50%; transform:translate(30%, 5%);font-size: 50;">{{ question.subject }}</p><p style="text-overflow: ellipsis;font-size: 20;color: dimgray;width: 300px;overflow: hidden;white-space: nowrap;">{{ question.content }}</p></div></a>
     {% endfor %}
     </div>
 {% endif %}

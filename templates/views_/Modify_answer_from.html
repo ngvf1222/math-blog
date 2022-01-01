@@ -1,5 +1,5 @@
-<form action="/das/{{ a.id }}/" method="post" style="display: flex;height: 100px;">
+<form action="/Modify_answer/{{ answer.id }}/" method="post" style="display: flex;height: 100px;">
     {% csrf_token %}
-    <textarea id="c" name="c" name="content" id="content" rows="15" style="width: 95%;"></textarea>
+    <textarea id="text" name="text" name="content" id="content" rows="15" style="width: 95%;">{{ answer.content }}</textarea>
     <input type="submit" value="수정" style="border-top-width: 0px;border-right-width: 0px;border-bottom-width: 0px;border-left-width: 0px;background-color: #9cd1ff;color: #0342f5;font-weight: 600;">
 </form>
