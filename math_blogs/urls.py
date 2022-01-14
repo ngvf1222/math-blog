@@ -11,7 +11,7 @@ urlpatterns = [
     path('Search_writing/<Search_value>', views.Search_writing),
     path('new_question_from', views.new_question_from),
     path('new_question', views.new_question),
-    path('login/', auth_views.LoginView.as_view(template_name='v/login.html')),
+    path('login/', auth_views.LoginView.as_view(template_name='views_/login.html')),
     path('logout/', auth_views.LogoutView.as_view()),
     path('user_addr_from', views.user_addr_from),
     path('user_addr', views.user_addr),
