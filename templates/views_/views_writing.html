@@ -27,9 +27,9 @@
 <p style="font-size: 10px;margin-left: 90%;margin-top: 0px;margin-bottom: 0px;">작성일:{{ question.create_date }}</p>
 
         <div class="my-3">
-            <a href="/Modify_question_from/{{ question.id }}" 
+            <a href="/Modify_question_from/{{ question.id }}" style="text-decoration: none;color: black;"
                class="btn btn-sm btn-outline-secondary">수정(글쓴이만가능)</a>
-            <a href="/delete_question/{{ question.id }}" 
+            <a href="/delete_question/{{ question.id }}" style="text-decoration: none;color: black;" 
                class="btn btn-sm btn-outline-secondary">삭제(글쓴이만가능)</a>
         </div>
 <div style="display: flex;height: 30px;">
@@ -49,8 +49,8 @@
         <div style="border-style: solid;border-color: #dddfe2;border-width: 1px;width: 100%;background-color: #ffffff;border-radius: 10px;margin-left: 0;position:relative;">
             <p style="word-break:break-all;font-size: 20;color: rgb(0, 0, 0);width: 100%;">{{ answer.content }}</p>
             <p style="font-size: 15;">글쓴이:{{ answer.ids }}</p>
-            <a href="/Modify_answer_from/{{ answer.id }}">수정(글쓴이만가능)</a>
-            <a href="/delete_answer/{{ answer.id }}">삭제(글쓴이만가능)</a>
+            <a href="/Modify_answer_from/{{ answer.id }}" style="text-decoration: none;color: black;">수정(글쓴이만가능)</a>
+            <a href="/delete_answer/{{ answer.id }}" style="text-decoration: none;color: black;">삭제(글쓴이만가능)</a>
         </div>
     {% endfor %}
 </div>
